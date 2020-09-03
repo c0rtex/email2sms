@@ -15,12 +15,8 @@ module.exports = async (req, res) => {
   const to = req.body.to;
   const subject = req.body.subject;
   const body = req.body.text;
-  let formattedBody = body.replace(
-    "Secured by Paubox - HITRUST CSF Certified",
-    ""
-  );
-  formattedBody = formattedBody.replace("https://www.paubox.com", "");
-  formattedBody = formattedBody.replace("----", "");
+  let formattedBody = body;
+  formattedBody = formattedBody.replace(/\n\s*\n/g, "\n");
   formattedBody = formattedBody.trim();
 
   //Using email-addresses library to extract email details.
